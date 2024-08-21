@@ -1,0 +1,102 @@
+{
+  "displayName": "SwitchBot",
+  "name": "@switchbot/homebridge-switchbot",
+  "version": "3.4.0",
+  "description": "The SwitchBot plugin allows you to access your SwitchBot device(s) from HomeKit.",
+  "author": {
+    "name": "SwitchBot",
+    "url": "https://github.com/SwitchBot",
+    "email": "support@wondertechlabs.com"
+  },
+  "contributors": [
+    {
+      "name": "Donavan Becker",
+      "url": "https://github.com/donavanbecker"
+    }
+  ],
+  "type": "module",
+  "license": "ISC",
+  "icon": "https://raw.githubusercontent.com/OpenWonderLabs/homebridge-switchbot/latest/branding/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/OpenWonderLabs/homebridge-switchbot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/OpenWonderLabs/homebridge-switchbot/issues"
+  },
+  "engines": {
+    "homebridge": "^1.7.0",
+    "node": "^18 || ^20"
+  },
+  "main": "dist/index.js",
+  "scripts": {
+    "check": "npm install && npm outdated",
+    "update": "ncu -u && npm update && npm install",
+    "lint": "eslint src/**/*.ts",
+    "watch": "npm run build && npm run plugin-ui && npm link && nodemon",
+    "plugin-ui": "rsync ./src/homebridge-ui/public/index.html ./dist/homebridge-ui/public/",
+    "build": "rimraf ./dist && tsc",
+    "prepublishOnly": "npm run lint && npm run build && npm run plugin-ui ",
+    "postpublish": "npm run clean",
+    "clean": "rimraf ./dist",
+    "test": "npm run lint"
+  },
+  "funding": [
+    {
+      "type": "Paypal",
+      "url": "https://paypal.me/donavanbecker"
+    },
+    {
+      "type": "GitHub",
+      "url": "https://github.com/sponsors/donavanbecker"
+    }
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "homebridge-plugin",
+    "switchbot",
+    "lights",
+    "fan",
+    "outlet",
+    "hub",
+    "lightstrip",
+    "motion",
+    "contact",
+    "vacuum",
+    "lock",
+    "humidifier",
+    "humidity",
+    "temperature",
+    "bot",
+    "curtains",
+    "windows",
+    "ble",
+    "ir"
+  ],
+  "dependencies": {
+    "@homebridge/plugin-ui-utils": "^1.0.1",
+    "async-mqtt": "^2.6.3",
+    "fakegato-history": "^0.6.4",
+    "homebridge-lib": "^6.7.3",
+    "rxjs": "^7.8.1",
+    "undici": "^6.6.2"
+  },
+  "optionalDependencies": {
+    "node-switchbot": "2.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.17",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "eslint": "^8.56.0",
+    "homebridge": "^1.7.0",
+    "homebridge-config-ui-x": "4.55.1",
+    "nodemon": "^3.0.3",
+    "npm-check-updates": "^16.14.15",
+    "rimraf": "^5.0.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}
