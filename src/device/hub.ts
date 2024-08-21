@@ -582,6 +582,7 @@ export class Hub {
         log: this.platform.log,
         storage: 'fs',
         filename: `${hostname().split('.')[0]}_${mac}_persist.json`,
+        minutes: 1,
       })
       : null;
   }
